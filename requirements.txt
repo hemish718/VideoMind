@@ -8,7 +8,8 @@ ffmpeg-python>=0.2.0
 
 # ── Speech-to-Text (local) ────────────────────────────────────────────────────
 # ✅ Use faster-whisper instead of openai-whisper (no numba/llvmlite dependency)
-faster-whisper>=0.10.0            # ✅ Python 3.14 compatible
+# faster-whisper>=0.10.0            # ✅ Python 3.14 compatible
+openai-whisper>=20250625
 torch>=2.2.0
 torchaudio>=2.2.0
 
