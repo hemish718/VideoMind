@@ -1,0 +1,25 @@
+# Environment variables
+.env
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Generated databases
+vector_db/
+faiss_index/
+chroma_db/
+db/
+
+# Downloaded media
+downloades/
+*.wav
+*.mp3
+*.mp4
+
+# OS files
+.DS_Store
+Thumbs.db
