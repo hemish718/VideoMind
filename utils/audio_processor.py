@@ -7,7 +7,7 @@ os.makedirs(DOWNLOAD_DIR,exist_ok = True)
 
 
 # ✅ Sirf yeh 2 lines add ki hain
-# FFMPEG_PATH = "D:/sms/ffmpeg-8.1.2-essentials_build/bin/ffmpeg.exe"
+FFMPEG_PATH = "D:/sms/ffmpeg-8.1.2-essentials_build/bin/ffmpeg.exe"
 
 #upar wali line FFMPEG_PATCH chhe aa hatavi jayre loaclly run karvu hoy aa github push kariye atala hatavi
 # nahi tar code run nai thay local machine per
@@ -17,56 +17,56 @@ os.makedirs(DOWNLOAD_DIR,exist_ok = True)
 
 def download_youtube_audio(url :str) ->str:
     output_path = os.path.join(DOWNLOAD_DIR, "%(title)s.%(ext)s")
-    # ydl_opts = {
-    #     "format": "bestaudio/best",
-    #     "outtmpl": output_path,
-    #     "postprocessors": [
-    #         {
-    #             "key": "FFmpegExtractAudio",
-    #             "preferredcodec": "wav",
-    #             "preferredquality": "192",
-    #         }
-    #     ],
-    #     "quiet": True,
-    #     "ffmpeg_location": FFMPEG_PATH,
-    # }
+    ydl_opts = {
+        "format": "bestaudio/best",
+        "outtmpl": output_path,
+        "postprocessors": [
+            {
+                "key": "FFmpegExtractAudio",
+                "preferredcodec": "wav",
+                "preferredquality": "192",
+            }
+        ],
+        "quiet": True,
+        "ffmpeg_location": FFMPEG_PATH,
+    }
 
 #upar wali line ydl_opts chhe aa hatavi jayre loaclly run karvu hoy aa github push kariye atala hatavi
 # nahi tar code run nai thay local machine per
 
 
 
-    ydl_opts = {
-    "format": "bestaudio/best",
-    "outtmpl": output_path,
-    "quiet": True,
-    "noplaylist": True,
-    "nocheckcertificate": True,
-    "geo_bypass": True,
-    "extract_flat": False,
-    "retries": 10,
+    # ydl_opts = {
+    # "format": "bestaudio/best",
+    # "outtmpl": output_path,
+    # "quiet": True,
+    # "noplaylist": True,
+    # "nocheckcertificate": True,
+    # "geo_bypass": True,
+    # "extract_flat": False,
+    # "retries": 10,
 
-    "postprocessors": [
-        {
-            "key": "FFmpegExtractAudio",
-            "preferredcodec": "wav",
-            "preferredquality": "192",
-        }
-    ],
+    # "postprocessors": [
+    #     {
+    #         "key": "FFmpegExtractAudio",
+    #         "preferredcodec": "wav",
+    #         "preferredquality": "192",
+    #     }
+    # ],
 
-    "http_headers": {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-            "AppleWebKit/537.36 (KHTML, like Gecko) "
-            "Chrome/138.0 Safari/537.36"
-        )
-    }
-}
+    # "http_headers": {
+    #     "User-Agent": (
+    #         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    #         "AppleWebKit/537.36 (KHTML, like Gecko) "
+    #         "Chrome/138.0 Safari/537.36"
+    #     )
+    # }
+# }
 
-    # with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    #     info = ydl.extract_info(url, download=True)
-    #     filename = ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
-    # return filename
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        info = ydl.extract_info(url, download=True)
+        filename = ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
+    return filename
 
 #upar wali line with yt_dlp.... chhe aa hatavi jayre loaclly run karvu hoy aa github push kariye atala hatavi
 # nahi tar code run nai thay local machine per
@@ -74,15 +74,15 @@ def download_youtube_audio(url :str) ->str:
 
 
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        try:
-            info = ydl.extract_info(url, download=True)
-            filename = ydl.prepare_filename(info)
-            filename = filename.replace(".webm", ".wav").replace(".m4a", ".wav")
-            return filename
+#     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+#         try:
+#             info = ydl.extract_info(url, download=True)
+#             filename = ydl.prepare_filename(info)
+#             filename = filename.replace(".webm", ".wav").replace(".m4a", ".wav")
+#             return filename
 
-        except Exception as e:
-            raise Exception(f"yt-dlp Error: {str(e)}")
+#         except Exception as e:
+#             raise Exception(f"yt-dlp Error: {str(e)}")
 
 
 
