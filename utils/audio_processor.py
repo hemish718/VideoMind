@@ -41,6 +41,10 @@ def download_youtube_audio(url :str) ->str:
     "outtmpl": output_path,
     "quiet": True,
     "noplaylist": True,
+    "nocheckcertificate": True,
+    "geo_bypass": True,
+    "extract_flat": False,
+    "retries": 10,
 
     "postprocessors": [
         {
