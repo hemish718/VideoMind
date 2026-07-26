@@ -31,7 +31,7 @@ def download_youtube_audio(url :str) ->str:
     #     "ffmpeg_location": FFMPEG_PATH,
     # }
 
-#upar wali line FFMPEG_PATCH chhe aa hatavi jayre loaclly run karvu hoy aa github push kariye atala hatavi
+#upar wali line ydl_opts chhe aa hatavi jayre loaclly run karvu hoy aa github push kariye atala hatavi
 # nahi tar code run nai thay local machine per
 
 
@@ -59,10 +59,28 @@ def download_youtube_audio(url :str) ->str:
     }
 }
 
+    # with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    #     info = ydl.extract_info(url, download=True)
+    #     filename = ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
+    # return filename
+
+#upar wali line with yt_dlp.... chhe aa hatavi jayre loaclly run karvu hoy aa github push kariye atala hatavi
+# nahi tar code run nai thay local machine per
+
+
+
+
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        info = ydl.extract_info(url, download=True)
-        filename = ydl.prepare_filename(info).replace(".webm", ".wav").replace(".m4a", ".wav")
-    return filename
+        try:
+            info = ydl.extract_info(url, download=True)
+            filename = ydl.prepare_filename(info)
+            filename = filename.replace(".webm", ".wav").replace(".m4a", ".wav")
+            return filename
+
+        except Exception as e:
+            raise Exception(f"yt-dlp Error: {str(e)}")
+
+
 
 # data=download_youtube_audio("https://youtu.be/mtiOK2QG9Q0?si=ruaWGEXfMGYQLlek")
 
